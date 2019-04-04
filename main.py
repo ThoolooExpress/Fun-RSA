@@ -7,6 +7,8 @@ def euclidean(args):
     # at some point I'll move them to their own files
     # don't worry about that, I'll deal with it
     print("We're in euclidean space now!")
+    # Use args.nums for your arguments
+    print("{} and {} are the two numbers you put in".format(args.nums[0], args.nums[1]))
     # the command line arguments are in args.nums (list of 2)
 
 def modular(args):
@@ -37,7 +39,14 @@ r_parser.set_defaults(func=rsa)
 
 # e_parser
 
-e_parser.add_argument("nums", metavar="N", type=int, nargs=2)
+e_parser.add_argument("nums", metavar="N", type=int, nargs=2, help="The two numbers for which to find the greatest common divisor")
+
+# m_parser
+m_parser.add_argument("dividend", metavar="A", type=int, nargs=1, help="The dividend for the modulus function")
+m_parser.add_argument("divisor", metavar="B", type=int, nargs=1, help="The divisor for the modulus function")
+
+# p_parser
+p_parser.add_argument("num", metavar="N", nargs=1, type=int, help="The number for which to find a relativley prime number")
 
 args = parser.parse_args()
 
