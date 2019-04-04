@@ -2,14 +2,17 @@ import argparse
 
 parser = argparse.ArgumentParser(description="This program does everything!!")
 
-def euclidean(args):
-    # Code for each of these questions goes in these funcitons
-    # at some point I'll move them to their own files
-    # don't worry about that, I'll deal with it
-    print("We're in euclidean space now!")
-    # Use args.nums for your arguments
-    print("{} and {} are the two numbers you put in".format(args.nums[0], args.nums[1]))
-    # the command line arguments are in args.nums (list of 2)
+def xgcd(args):
+    """return (g, x, y) such that a*x + b*y = g = gcd(a, b)"""
+    a, b = args.nums[0], args.nums[1]
+    x0, x1, y0, y1 = 0, 1, 1, 0
+    while a != 0:
+        q, b, a = b // a, a, b % a
+        y0, y1 = y1, y0 - q * y1
+        x0, x1 = x1, x0 - q * x1
+     
+
+    print("GCD: {}, c1: {}, c2: {}".format(b, x0, y0))
 
 def modular(args):
     print("We're running the modular shit now!")
@@ -27,7 +30,7 @@ def rsa(args):
 subparsers = parser.add_subparsers() # Ugh... this is really complicated...
 
 e_parser = subparsers.add_parser("euclidean", help="Run question 1: Implement Euclidean Algorithm for calculating greatest common divisor")
-e_parser.set_defaults(func=euclidean)
+e_parser.set_defaults(func=xgcd)
 m_parser = subparsers.add_parser("modular", help="Run question 2: Modular arithmetic")
 m_parser.set_defaults(func=modular)
 p_parser = subparsers.add_parser("RP", help="Run question 3: Find Relatively Prime")
