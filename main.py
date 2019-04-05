@@ -15,7 +15,10 @@ def xgcd(args):
     print("GCD: {}, c1: {}, c2: {}".format(b, x0, y0))
 
 def modular(args):
-    print("We're running the modular shit now!")
+    dividend = args.dividend[0]
+    divisor = args.divisor[0]
+    res = abs(dividend % divisor)
+    print("{} % {} = {}".format(dividend, divisor, res))
 
 def rp(args):
     print("_relativley_ prime")
