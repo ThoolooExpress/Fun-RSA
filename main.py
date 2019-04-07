@@ -1,4 +1,5 @@
 import argparse
+import math
 
 parser = argparse.ArgumentParser(description="This program does everything!!")
 
@@ -24,7 +25,32 @@ def rp(args):
     print("_relativley_ prime")
 
 def inverse(args):
-    print("running inverse")
+    a, m = args.nms[0], args.nms[1]
+    m0 = m
+    y = 0
+    x = 1
+
+    if (math.gcd(a, m)) == 1:
+
+        while a > 1:
+            q = a // m
+
+            t = m
+
+            m = a % m
+            a = t
+            t = y
+
+            y = x - q * y
+            x = t
+
+        if x < 0:
+            x = x + m0
+
+        print("The inverse modulo is: {}".format(x))
+
+    else:
+        print("The two numbers are not relatively prime")
 
 def rsa(args):
     print("Oh look, the only function that actually matters")
@@ -53,6 +79,9 @@ m_parser.add_argument("divisor", metavar="B", type=int, nargs=1, help="The divis
 
 # p_parser
 p_parser.add_argument("num", metavar="N", nargs=1, type=int, help="The number for which to find a relativley prime number")
+
+#i_parser
+i_parser.add_argument("nms", metavar="N",type=int, nargs=2, help="The two numbers for which to find the inverse modulo")
 
 args = parser.parse_args()
 
