@@ -1,19 +1,12 @@
 import argparse
 import math
+from includes.euclidean import xgcd
 
 parser = argparse.ArgumentParser(description="This program does everything!!")
 
-def xgcd(args):
-    """return (g, x, y) such that a*x + b*y = g = gcd(a, b)"""
-    a, b = args.nums[0], args.nums[1]
-    x0, x1, y0, y1 = 0, 1, 1, 0
-    while a != 0:
-        q, b, a = b // a, a, b % a
-        y0, y1 = y1, y0 - q * y1
-        x0, x1 = x1, x0 - q * x1
-     
-
-    print("GCD: {}, c1: {}, c2: {}".format(b, x0, y0))
+def euclidean(args):
+    g, x, y = xgcd(args.nums[0], args.nums[1])
+    print("GCD: {}, c1: {}, c2: {}".format(g, x, y))
 
 def modular(args):
     dividend = args.dividend[0]
