@@ -23,7 +23,8 @@ def inverse(args):
     y = 0
     x = 1
 
-    if (math.gcd(a, m)) == 1:
+    g, _, _ = xgcd(a, m)
+    if g == 1:
 
         while a > 1:
             q = a // m
