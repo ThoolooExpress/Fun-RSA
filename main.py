@@ -2,7 +2,7 @@ import argparse
 import math
 from includes.euclidean import xgcd
 
-parser = argparse.ArgumentParser(description="This program does everything!!")
+parser = argparse.ArgumentParser(description="Oh wow, somebody actually bothered to generate this man page, good job!")
 
 def euclidean(args):
     g, x, y = xgcd(args.nums[0], args.nums[1])
