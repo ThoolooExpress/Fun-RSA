@@ -18,7 +18,7 @@ def rp(args):
     print("_relativley_ prime")
 
 def inverse(args):
-    a, m = args.nms[0], args.nms[1]
+    a, m = args.nums[0], args.nums[1]
     m0 = m
     y = 0
     x = 1
@@ -74,7 +74,7 @@ m_parser.add_argument("divisor", metavar="B", type=int, nargs=1, help="The divis
 p_parser.add_argument("num", metavar="N", nargs=1, type=int, help="The number for which to find a relativley prime number")
 
 #i_parser
-i_parser.add_argument("nms", metavar="N",type=int, nargs=2, help="The two numbers for which to find the inverse modulo")
+i_parser.add_argument("nums", metavar="N",type=int, nargs=2, help="The two numbers for which to find the inverse modulo")
 
 args = parser.parse_args()
 
