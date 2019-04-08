@@ -74,7 +74,7 @@ m_parser.add_argument("divisor", metavar="B", type=int, nargs=1, help="The divis
 # p_parser
 p_parser.add_argument("num", metavar="N", nargs=1, type=int, help="The number for which to find a relativley prime number")
 
-#i_parser
+# i_parser
 i_parser.add_argument("nums", metavar="N",type=int, nargs=2, help="The two numbers for which to find the inverse modulo")
 
 args = parser.parse_args()
