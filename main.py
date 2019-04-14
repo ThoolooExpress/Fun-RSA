@@ -1,6 +1,7 @@
 import argparse
 # import math
 from includes.euclidean import xgcd
+from includes.rp import rp
 
 parser = argparse.ArgumentParser(description="Oh wow, somebody actually bothered to generate this man page, good job!")
 
@@ -14,8 +15,9 @@ def modular(args):
     res = abs(dividend % divisor)
     print("{} % {} = {}".format(dividend, divisor, res))
 
-def rp(args):
-    print("_relativley_ prime")
+def relativelyPrime(args):
+    print("{} is relatively prime with {}".format(rp(args.num[0]), args.num[0]))
+    
 
 def inverse(args):
     a, m = args.nums[0], args.nums[1]
@@ -57,7 +59,7 @@ e_parser.set_defaults(func=xgcd)
 m_parser = subparsers.add_parser("modular", help="Run question 2: Modular arithmetic")
 m_parser.set_defaults(func=modular)
 p_parser = subparsers.add_parser("RP", help="Run question 3: Find Relatively Prime")
-p_parser.set_defaults(func=rp)
+p_parser.set_defaults(func=relativelyPrime)
 i_parser = subparsers.add_parser("inverse", help="Run question 4: Find Inverse")
 i_parser.set_defaults(func=inverse)
 r_parser = subparsers.add_parser("rsa", help="Run question 5: Practice with RSA algorithm")
@@ -72,7 +74,7 @@ m_parser.add_argument("dividend", metavar="A", type=int, nargs=1, help="The divi
 m_parser.add_argument("divisor", metavar="B", type=int, nargs=1, help="The divisor for the modulus function")
 
 # p_parser
-p_parser.add_argument("num", metavar="N", nargs=1, type=int, help="The number for which to find a relativley prime number")
+p_parser.add_argument("num", metavar="N", nargs=1, type=int, help="The number for which to find a relatively prime number")
 
 # i_parser
 i_parser.add_argument("nums", metavar="N",type=int, nargs=2, help="The two numbers for which to find the inverse modulo")
