@@ -1,5 +1,5 @@
 import argparse
-import math
+# import math
 from includes.euclidean import xgcd
 
 parser = argparse.ArgumentParser(description="Oh wow, somebody actually bothered to generate this man page, good job!")
