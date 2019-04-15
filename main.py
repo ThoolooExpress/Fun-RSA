@@ -1,7 +1,7 @@
 import argparse
 # import math
 from includes.euclidean import xgcd
-from includes.rp import rp
+from includes.prime import rp
 from includes.inverse import inverse
 
 parser = argparse.ArgumentParser(description="Oh wow, somebody actually bothered to generate this man page, good job!")
@@ -34,8 +34,8 @@ def rsa(args):
 subparsers = parser.add_subparsers() # Ugh... this is really complicated...
 
 e_parser = subparsers.add_parser("euclidean", help="Run question 1: Implement Euclidean Algorithm for calculating greatest common divisor")
-e_parser.set_defaults(func=xgcd)
-m_parser = subparsers.add_parser("modular", help="Run question 2: Modular arithmetic")
+e_parser.set_defaults(func=euclidean)
+m_parser = subparsers.add_parser("modular", help="Run question 2: Modulus function")
 m_parser.set_defaults(func=modular)
 p_parser = subparsers.add_parser("RP", help="Run question 3: Find Relatively Prime")
 p_parser.set_defaults(func=relativelyPrime)

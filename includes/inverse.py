@@ -1,29 +1,26 @@
 from .euclidean import xgcd
-def inverse(a: int, m: int):
-    """ Return the inverse modulus of a and m if they are relatively prime, None if not """
+def inverse(a: int, m: int) -> int:
+    """ Return the inverse modulus of a and m.
+        @precondition: a and m must be relatively prime
+    """
+    assert xgcd(a, m)[0] == 1
     # a, m = args.nums[0], args.nums[1]
     m0 = m
     y = 0
     x = 1
+    while a > 1:
+        q = a // m
 
-    g, _, _ = xgcd(a, m)
-    if g == 1:
+        t = m
 
-        while a > 1:
-            q = a // m
+        m = a % m
+        a = t
+        t = y
 
-            t = m
+        y = x - q * y
+        x = t
 
-            m = a % m
-            a = t
-            t = y
-
-            y = x - q * y
-            x = t
-
-        if x < 0:
-            x = x + m0
-        
-        return x
-    else:
-        return None
+    if x < 0:
+        x = x + m0
+    
+    return x
