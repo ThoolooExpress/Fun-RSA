@@ -2,7 +2,9 @@
 from .euclidean import xgcd
 
 def rp(a: int) -> int:
-    ''' Return a number that is relatively prime with a (gcd(a, rp) == 1), and is smaller than a '''
+    ''' Return a number that is relatively prime with a (gcd(a, rp) == 1), and is smaller than a.
+        @warning -- may return 1 if no other suitable number may be found
+    '''
     print (a)
     ret = a - 1
     while xgcd(a, ret)[0] > 1:
